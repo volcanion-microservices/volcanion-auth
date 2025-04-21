@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
@@ -16,17 +15,25 @@ export class LoginComponent {
   authService = inject(AuthService);
   router = inject(Router);
   loginObject: LoginModel | undefined;
+  isRememberMe = false;
 
   protected loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    phoneNumber: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
+    rememberMe: new FormControl(false),
   });
 
+  onCheckboxChange(event: Event) {
+    this.isRememberMe = (event.target as HTMLInputElement).checked
+  }
+
   onSubmit() {
+    console.log(this.loginObject);
     if (this.loginForm.valid) {
       this.loginObject = new LoginModel(
-        this.loginForm.value.email,
+        this.loginForm.value.phoneNumber,
         this.loginForm.value.password,
+        this.loginForm.value.rememberMe,
       );
 
       console.log(this.loginObject);

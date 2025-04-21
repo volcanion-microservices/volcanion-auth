@@ -5,8 +5,9 @@
     <span>You don't have an account? <a routerLink="/signup">Sign up</a></span>
   </div>
   <form class="form-group" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <input name="email" type="email" formControlName="email" placeholder="Email">
+    <input name="phoneNumber" type="text" formControlName="phoneNumber" placeholder="Phone number...">
     <input type="password" formControlName="password" placeholder="Password">
+    <label><input type="checkbox" [checked]="isRememberMe" (change)="onCheckboxChange($event)" formControlName="rememberMe" style="width: unset; margin-right: 10px;"> <span>Remember me</span></label>
     <button>Submit</button>
   </form>
 

@@ -1,11 +1,15 @@
 import { FormControl, ɵValue } from '@angular/forms';
 
 export class LoginModel {
-  email: ɵValue<FormControl<string | null>> | undefined;
+  phoneNumber: ɵValue<FormControl<string | null>> | undefined;
   password: ɵValue<FormControl<string | null>> | undefined;
+  issuer: ɵValue<FormControl<string | null>> | undefined;
+  rememberMe: ɵValue<FormControl<boolean | null>> | undefined;
 
-  constructor(email: ɵValue<FormControl<string | null>> | undefined, password: ɵValue<FormControl<string | null>> | undefined) {
-    this.email = email;
+  constructor(phoneNumber: ɵValue<FormControl<string | null>> | undefined, password: ɵValue<FormControl<string | null>> | undefined, rememberMe: ɵValue<FormControl<boolean | null>> | undefined) {
+    this.phoneNumber = phoneNumber;
     this.password = password;
+    this.issuer = 'Volcanion-Issuer';
+    this.rememberMe = rememberMe;
   }
 }
